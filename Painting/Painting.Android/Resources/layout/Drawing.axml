@@ -19,33 +19,28 @@
         android:minWidth="25px"
         android:layout_height="match_parent"
         android:layout_weight="85"
-        android:minHeight="25px">
-        <Button
-            android:layout_width="0dp"
+        android:minHeight="25px"
+        android:weightSum="3">
+        <Spinner
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/btnBlack"
-            android:layout_weight="25"
-            android:backgroundTint="#ff000000"
-            android:background="@android:color/background_dark" />
-        <Button
-            android:layout_width="0dp"
+            android:id="@+id/spColor"
+            android:prompt="@string/color_prompt"
+            android:layout_weight="1"
+            android:layout_margin="1dp" />
+        <Spinner
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/btnRed"
-            android:layout_weight="25"
-            android:backgroundTint="#ffff0000"
-            android:background="@android:color/holo_red_dark" />
-        <Button
-            android:layout_width="0dp"
+            android:id="@+id/spWidth"
+            android:prompt="@string/width_prompt"
+            android:layout_weight="1"
+            android:layout_margin="1dp" />
+        <Spinner
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/btnBlue"
-            android:layout_weight="25"
-            android:backgroundTint="#ff0000ff"
-            android:background="@android:color/holo_blue_dark" />
-        <EditText
-            android:inputType="number"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/tWidth"
-            android:layout_weight="25" />
+            android:id="@+id/spType"
+            android:prompt="@string/type_prompt"
+            android:layout_weight="1"
+            android:layout_margin="1dp" />
     </LinearLayout>
 </LinearLayout>

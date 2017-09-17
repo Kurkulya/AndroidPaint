@@ -21,33 +21,61 @@ namespace Painting.Droid
 		{
 			base.OnCreate (bundle);
 			SetContentView (Resource.Layout.Drawing);
-
-            data.Color = Color.Black;
-            data.Width = 5;
             FindViewById<DrawView>(Resource.Id.drawFiheld).data = data;
+            SetSpinnersListeners();
 
-            int[] idColors = new int[] { Resource.Id.btnBlack, Resource.Id.btnBlue, Resource.Id.btnRed };
+        }
 
-            foreach (int i in idColors)
+
+
+        private void SetSpinnersListeners()
+        {
+            Spinner spColor = FindViewById<Spinner>(Resource.Id.spColor);
+            Spinner spWidth = FindViewById<Spinner>(Resource.Id.spWidth);
+            Spinner spType = FindViewById<Spinner>(Resource.Id.spType);
+         
+            var adapterC = ArrayAdapter.CreateFromResource(this, Resource.Array.color_array, Android.Resource.Layout.SimpleSpinnerItem);
+            adapterC.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            spColor.Adapter = adapterC;
+
+            var adapterW = ArrayAdapter.CreateFromResource(this, Resource.Array.width_array, Android.Resource.Layout.SimpleSpinnerItem);
+            adapterW.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            spWidth.Adapter = adapterW;
+
+            var adapterT = ArrayAdapter.CreateFromResource(this, Resource.Array.type_array, Android.Resource.Layout.SimpleSpinnerItem);
+            adapterT.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            spType.Adapter = adapterT;
+
+            spColor.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_ItemSelected);
+            spType.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_ItemSelected);
+            spWidth.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_ItemSelected);
+        }
+
+        private void spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            Spinner spinner = (Spinner)sender;
+            if(spinner.Id == Resource.Id.spColor)
             {
-                Button tBut = FindViewById<Button>(i);
-                tBut.Click += GetColor;
+                switch(spinner.SelectedItem.ToString())
+                {
+                    case "Red": data.Color = Color.Red; break;
+                    case "Blue": data.Color = Color.Blue; break;
+                    case "Black": data.Color = Color.Black; break;
+                }
             }
-            FindViewById<EditText>(Resource.Id.tWidth).TextChanged += GetWidth;
-        }
-
-        public void GetWidth(object sender, EventArgs e)
-        {
-            data.Width = Int32.Parse((sender as EditText).Text);
-        }
-
-        public void GetColor(object sender, EventArgs e)
-        {
-            var buttonBackground = (sender as Button).Background;
-            if (buttonBackground is ColorDrawable)
+            else if (spinner.Id == Resource.Id.spWidth)
             {
-                data.Color = (buttonBackground as ColorDrawable).Color;
-                //You now have a background color.
+                data.Width = Convert.ToInt32(spinner.SelectedItem.ToString());
+            }
+            else if (spinner.Id == Resource.Id.spType)
+            {
+                switch (spinner.SelectedItem.ToString())
+                {
+                    case "Curve": data.Type = Figure.FType.Curve; break;
+                    case "Rect": data.Type = Figure.FType.Rect; break;
+                    case "Ellipse": data.Type = Figure.FType.Ellipse; break;
+                    case "Line": data.Type = Figure.FType.Line; break;
+                }
             }
         }
     }

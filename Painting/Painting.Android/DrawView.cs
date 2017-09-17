@@ -50,7 +50,7 @@ namespace Painting.Droid
 
         private void AddFigure(float curX, float curY)
         {
-            Figure figure = new Figure(new PointF(x, y), new PointF(curX, curY), data.Color, data.Width);
+            Figure figure = new Figure(new PointF(x, y), new PointF(curX, curY), data.Color, data.Width, data.Type);
             figures.Add(figure);
         }
 
@@ -63,9 +63,12 @@ namespace Painting.Droid
                     y = e.GetY();
                     break;
                 case MotionEventActions.Move:
-                    AddFigure(e.GetX(), e.GetY());
-                    x = e.GetX();
-                    y = e.GetY();
+                    if (data.Type == Figure.FType.Curve)
+                    {
+                        AddFigure(e.GetX(), e.GetY());
+                        x = e.GetX();
+                        y = e.GetY();
+                    }
                     break;
                 case MotionEventActions.Up:
                     AddFigure(e.GetX(), e.GetY());

@@ -28,6 +28,28 @@ namespace Painting.Droid
 		{
 		}
 		
+		public partial class Array
+		{
+			
+			// aapt resource value: 0x7f050000
+			public const int color_array = 2131034112;
+			
+			// aapt resource value: 0x7f050002
+			public const int type_array = 2131034114;
+			
+			// aapt resource value: 0x7f050001
+			public const int width_array = 2131034113;
+			
+			static Array()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Array()
+			{
+			}
+		}
+		
 		public partial class Attribute
 		{
 			
@@ -60,23 +82,20 @@ namespace Painting.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050001
-			public const int btnBlack = 2131034113;
+			// aapt resource value: 0x7f060000
+			public const int drawFiheld = 2131099648;
 			
-			// aapt resource value: 0x7f050003
-			public const int btnBlue = 2131034115;
+			// aapt resource value: 0x7f060004
+			public const int myButton = 2131099652;
 			
-			// aapt resource value: 0x7f050002
-			public const int btnRed = 2131034114;
+			// aapt resource value: 0x7f060001
+			public const int spColor = 2131099649;
 			
-			// aapt resource value: 0x7f050000
-			public const int drawFiheld = 2131034112;
+			// aapt resource value: 0x7f060003
+			public const int spType = 2131099651;
 			
-			// aapt resource value: 0x7f050005
-			public const int myButton = 2131034117;
-			
-			// aapt resource value: 0x7f050004
-			public const int tWidth = 2131034116;
+			// aapt resource value: 0x7f060002
+			public const int spWidth = 2131099650;
 			
 			static Id()
 			{
@@ -113,8 +132,17 @@ namespace Painting.Droid
 			// aapt resource value: 0x7f040001
 			public const int app_name = 2130968577;
 			
+			// aapt resource value: 0x7f040002
+			public const int color_prompt = 2130968578;
+			
 			// aapt resource value: 0x7f040000
 			public const int hello = 2130968576;
+			
+			// aapt resource value: 0x7f040004
+			public const int type_prompt = 2130968580;
+			
+			// aapt resource value: 0x7f040003
+			public const int width_prompt = 2130968579;
 			
 			static String()
 			{
